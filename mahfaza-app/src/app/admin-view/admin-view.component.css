@@ -1,0 +1,12 @@
+.card-item{
+    cursor: pointer;
+    display: inline-block;
+    width: 150px;
+}
+
+.card-deck{
+    
+    max-height: 25%;
+    overflow: auto;
+    white-space: nowrap;
+}

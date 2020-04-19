@@ -1,0 +1,51 @@
+<div class="row mt-5 text-center mx-3">
+    <div class="col">
+
+        <h1>Measure & Improve</h1>
+    </div>
+
+</div>
+<div class="row mt-5 mx-3">
+    <div class="col">
+        <form class="">
+            <div class="input-group mb-3 shadow-sm">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Amount</span>
+                </div>
+                <input [(ngModel)]="entryAmount" name="entryAmount" type="number" class="form-control"
+                    aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Amount in EGP">
+            </div>
+            <div class="input-group mb-3 shadow-sm">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Category</span>
+                </div>
+                <select ngModel name="category" class="form-control" id="exampleFormControlSelect1">
+                    <option *ngFor="let category of categories">
+                        {{category.categoryName}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3 shadow-sm">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Item</span>
+                </div>
+                <select ngModel name="item" class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group mb-3 shadow-sm">
+                <label for="description">description</label>
+                <textarea [(ngModel)]="description" name="description" class="form-control" id="description"
+                    rows="1"></textarea>
+            </div>
+            <div (click)="submit()" class="col d-flex justify-content-center mt-5 ">
+                <img src=" ../../assets/img/5.png" width="80" height="80" alt="">
+            </div>
+        </form>
+    </div>
+</div>

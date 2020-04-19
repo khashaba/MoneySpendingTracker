@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif ;
+}
+
+.container-fluid{
+}
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  
+.navbar-brand{
+    padding: 0px;;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+h1{
+    font-family: 'Sedgwick Ave Display', cursive;
+    color: #ed145b;
+    font-size: 50px;
+}

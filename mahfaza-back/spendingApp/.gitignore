@@ -1,5 +1,8 @@
 HELP.md
 target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -16,10 +19,13 @@ target/
 *.iml
 *.ipr
 
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
 ### VS Code ###
 .vscode/
-.vagrant
-**/target
-**/node_modules
-
-**/package-lock.json
