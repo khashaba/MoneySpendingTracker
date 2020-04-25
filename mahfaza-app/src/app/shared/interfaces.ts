@@ -7,3 +7,11 @@ export interface IItem {
     name: string;
     categoryId:number;
 }
+export interface IRecord {
+    id?:number
+    amount: number;
+    itemId: number;
+    categoryId:number;
+    description:string;
+    date:Date;
+}

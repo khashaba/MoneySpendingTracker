@@ -30,8 +30,8 @@
                 <div class="input-group-prepend ">
                     <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Item</span>
                 </div>
-                <select ngModel name="item" class="form-control" id="exampleFormControlSelect1">
-                    <option *ngFor="let item of items">
+                <select ngModel name="item" class="form-control" id="exampleFormControlSelect1" (change)="selectedItem($event.target.value)" >
+                    <option *ngFor="let item of items; let i = index" [value]="i">
                         {{item.name}}
                     </option>
                 </select>

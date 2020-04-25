@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 
-import { ICategory, IItem } from '../../app/shared/interfaces';
+import { ICategory, IItem, IRecord } from '../../app/shared/interfaces';
 
 @Injectable()
 export class DataService {
 
     baseUrl: string = 'http://localhost:8080';
-
-
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
     constructor(private http: HttpClient) { }
 
     getCategories(): Observable<ICategory[]> {
@@ -21,10 +24,18 @@ export class DataService {
             );
     }
 
-    getItems(id:number): Observable<IItem[]> {
+    getItems(id: number): Observable<IItem[]> {
         return this.http.get<IItem[]>(this.baseUrl + `/categories/${id}/items`)
             .pipe(
                 map((response: IItem[]) => response as IItem[]),
+                catchError(this.handleError)
+            );
+    }
+    AddRecords(record: IRecord): Observable<IRecord> {
+        return this.http
+            .post<IRecord>(this.baseUrl + "/records", record, this.httpOptions)
+            .pipe(
+                retry(1),
                 catchError(this.handleError)
             );
     }
@@ -33,10 +44,8 @@ export class DataService {
         if (error.error instanceof Error) {
             const errMessage = error.error.message;
             return Observable.throw(errMessage);
-            // Use the following instead if using lite-server
-            // return Observable.throw(err.text() || 'backend server error');
         }
-        return Observable.throw(error || 'Node.js server error');
+        return Observable.throw(error || 'server error');
     }
 
 }
