@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 class CategoryController @Autowired constructor( private val categoryService: CategoryService) {
 
-
-    @GetMapping("")
+    @GetMapping
     fun getAllCategories()=ResponseEntity.ok(categoryService.getAllCategories())
 
     @GetMapping("/{id}")
@@ -28,7 +27,7 @@ class CategoryController @Autowired constructor( private val categoryService: Ca
         }
     }
 
-    @PostMapping("")
+    @PostMapping
     fun addCategory(@RequestBody categoryName: String)=categoryService.addCategory(categoryName)
     @PutMapping("/{id}")
     fun updateCategory(@PathVariable("id") id:String, @RequestBody categoryNewName: String)=categoryService.updateCategory(id.toInt(),categoryNewName)

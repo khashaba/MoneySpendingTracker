@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { ICategory } from '../../app/shared/interfaces';
+import { ICategory, IItem } from '../../app/shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -21,6 +21,13 @@ export class DataService {
             );
     }
 
+    getItems(id:number): Observable<IItem[]> {
+        return this.http.get<IItem[]>(this.baseUrl + `/categories/${id}/items`)
+            .pipe(
+                map((response: IItem[]) => response as IItem[]),
+                catchError(this.handleError)
+            );
+    }
     private handleError(error: any) {
         console.error('server error:', error);
         if (error.error instanceof Error) {

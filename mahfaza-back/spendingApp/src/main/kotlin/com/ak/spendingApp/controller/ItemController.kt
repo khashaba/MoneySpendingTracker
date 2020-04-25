@@ -6,15 +6,14 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/items")
 @CrossOrigin
 class ItemController @Autowired constructor(private val itemService: ItemService) {
 
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/categories/{id}/items")
     fun getAllItemsInCategory(@PathVariable("id") id:String)=ResponseEntity.ok(itemService.getAllItemsInCategory(id.toInt()))
 
-    @GetMapping("/{id}")
+    @GetMapping("/items/{id}")
     fun getItem(@PathVariable("id") id: String): ResponseEntity<Item> {
         val foundedItem = itemService.getItem( id.toInt())
         return if (foundedItem!= null) {
@@ -27,10 +26,10 @@ class ItemController @Autowired constructor(private val itemService: ItemService
         }
     }
 
-    @PostMapping("category/{id}")
+    @PostMapping("/categories/{id}/items")
     fun addItemInCategory(@PathVariable("id") id:String,@RequestBody itemName: String)=itemService.addItemInCategory(id.toInt(),itemName)
-    @PutMapping("/{id}")
+    @PutMapping("/items/{id}")
     fun updateItem(@PathVariable("id") id:String, @RequestBody itemNewName: String)=itemService.updateItemName(id.toInt(),itemNewName)
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/items/{id}")
     fun deleteCategory(@PathVariable("id") id:String)= itemService.deleteItem(id.toInt())
 }

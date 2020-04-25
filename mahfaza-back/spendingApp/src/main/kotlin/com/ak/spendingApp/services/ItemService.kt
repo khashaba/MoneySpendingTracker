@@ -13,7 +13,7 @@ class ItemService @Autowired  constructor(private var itemRepository : ItemRepos
     fun addItemInCategory(categoryId:Int,name:String)=itemRepository.save(Item(categoryId,name))
     fun updateItemName(id: Int, name:String){
        var item = itemRepository.findById(id).get()
-        item.itemName=name
+        item.name=name
         itemRepository.save(item)
 
     }

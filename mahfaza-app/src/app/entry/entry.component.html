@@ -19,8 +19,8 @@
                 <div class="input-group-prepend ">
                     <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Category</span>
                 </div>
-                <select ngModel name="category" class="form-control" id="exampleFormControlSelect1">
-                    <option *ngFor="let category of categories">
+                <select ngModel name="category" class="form-control" id="exampleFormControlSelect1" (change)="getItems($event.target.value)">
+                    <option *ngFor="let category of categories; let i = index" [value]="i">
                         {{category.categoryName}}
                     </option>
                 </select>
@@ -31,11 +31,9 @@
                     <span class="input-group-text bg-white text-dark " id="inputGroup-sizing-default">Item</span>
                 </div>
                 <select ngModel name="item" class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option *ngFor="let item of items">
+                        {{item.name}}
+                    </option>
                 </select>
             </div>
             <div class="form-group mb-3 shadow-sm">

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ICategory } from '../shared/interfaces';
+import { ICategory, IItem } from '../shared/interfaces';
 import { DataService } from '../core/data.service'
 import { from } from 'rxjs';
 
@@ -11,7 +11,8 @@ import { from } from 'rxjs';
 })
 export class EntryComponent implements OnInit {
 
-  categories: any[];
+  categories: ICategory[];
+  items: IItem[];
   constructor(private dataService: DataService) { }
   entryAmount: number = 23;
   description: string;
@@ -19,10 +20,12 @@ export class EntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getCategories().subscribe((returnedCategories: ICategory[]) => this.categories = returnedCategories);
-    console.log(this.categories)
   }
 
   submit() {
     console.log(this.description);
+  }
+  getItems(id: any){
+    this.dataService.getItems(id).subscribe((returnedItems: IItem[]) => this.items = returnedItems);
   }
 }

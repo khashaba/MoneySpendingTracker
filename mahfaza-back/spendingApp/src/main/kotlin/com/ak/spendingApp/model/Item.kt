@@ -6,7 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Item(var categoryId:Int,var itemName: String){
+data class Item(var categoryId:Int,var name: String){
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val itemId : Int = 0
+    val id : Int = 0
 }

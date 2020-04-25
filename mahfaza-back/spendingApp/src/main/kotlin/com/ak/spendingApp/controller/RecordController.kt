@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/record")
+@RequestMapping("/records")
 @CrossOrigin
 class RecordController @Autowired constructor(private val recordService: RecordService) {
 
 
-    @GetMapping("/")
+    @GetMapping
     fun getAllRecords()=ResponseEntity.ok(recordService.getAllRecords())
 
     @GetMapping("/{id}")
@@ -28,7 +28,7 @@ class RecordController @Autowired constructor(private val recordService: RecordS
         }
     }
 
-    @PostMapping("/")
+    @PostMapping
     fun addRecord(@RequestBody record:Record )=recordService.addRecord(record)
     //@PutMapping("/{id}")
    // fun updateRecord(@PathVariable("id") id:String,@RequestBody amount: String,@RequestBody name: String,@RequestBody categoryId: String,@RequestBody itemId: String,@RequestBody description: String )=recordService.updateRecord(id = id.toInt(),amount = amount.toFloat(),categoryId = categoryId.toInt(),itemId = itemId.toInt(),description = description)
